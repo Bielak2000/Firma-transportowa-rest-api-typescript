@@ -38,6 +38,7 @@ export const Login: FunctionComponent<Props> = (props: Props) => {
                                 required
                                 className={styles.Input}
                                 onChange={(e) => setUsername(e.target.value)}
+                                data-cy="username"
                             />
                         </div>
 
@@ -49,6 +50,7 @@ export const Login: FunctionComponent<Props> = (props: Props) => {
                                 required
                                 className={styles.Input}
                                 onChange={(e) => setPassword(e.target.value)}
+                                data-cy="password"
                             />
                         </div>
 
@@ -64,7 +66,7 @@ export const Login: FunctionComponent<Props> = (props: Props) => {
                     <Notification icon={<ErrorIcon/>} onClose={() => {
                         setError(false)
                     }} color="red">
-                        Zly email lub haslo!
+                        Zły email lub hasło!
                     </Notification>
                 </Center>
             }

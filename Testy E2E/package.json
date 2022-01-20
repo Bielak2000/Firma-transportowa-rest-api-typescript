@@ -1,0 +1,15 @@
+{
+  "license": "MIT",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:base": "cypress run --env type=base --config screenshotsFolder=cypress/snapshots/base"
+  },
+  "dependencies": {
+    "cypress": "^9.2.1",
+    "cypress-visual-regression": "^1.6.3"
+  },
+  "volta": {
+    "node": "16.13.2"
+  }
+}

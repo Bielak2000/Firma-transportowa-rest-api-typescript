@@ -6,6 +6,7 @@ import { createConnection } from "typeorm";
 import { dbCreateConnection } from "../../typeorm/dbCreateConnection";
 import {CreatePojazdDto} from "./dto/create-pojazd.dto";
 import {EditPojazdDto} from "./dto/edit-pojazd.dto";
+import { BadRequestException } from "../../exceptions/bad-request-exception";
 
 
 export const getPojazdy = async (data: SearchDto) : Promise<[PojazdEntity[], number]> => {
@@ -38,8 +39,12 @@ export const getPojazdyById = async (id: number): Promise<PojazdEntity | undefin
     return await pojazdRepository.findOne(id);
 }
 
-export const createPojazd = async (data: CreatePojazdDto): Promise<PojazdEntity> => {
+export const createPojazd = async ( data: CreatePojazdDto): Promise<PojazdEntity> => {
     const { nr_rejestracyjny, spalanie, stawka } = data;
+
+    if(nr_rejestracyjny==null){
+        throw new BadRequestException();
+    }
 
     const connection = await dbCreateConnection;
     const pojazdRepository = connection.getCustomRepository(PojazdRepository);
